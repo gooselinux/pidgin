@@ -1,0 +1,21 @@
+http://developer.pidgin.im/viewmtn/revision/info/0e3079d15adeb12c1e57ceaf5bf037f9b71c8abd
+Change clientLogin to use HTTPS, since the hash calculation appears fixed now.
+
+#
+#
+# patch "libpurple/protocols/oscar/clientlogin.c"
+#  from [d1110c449c4c558d139dffc12b0a941191ac8837]
+#    to [318c59bcf45207fefad4ab7a0e34bd63ebf7de34]
+#
+============================================================
+--- libpurple/protocols/oscar/clientlogin.c	d1110c449c4c558d139dffc12b0a941191ac8837
++++ libpurple/protocols/oscar/clientlogin.c	318c59bcf45207fefad4ab7a0e34bd63ebf7de34
+@@ -43,7 +43,7 @@
+ #include "core.h"
+ 
+ #define URL_CLIENT_LOGIN "https://api.screenname.aol.com/auth/clientLogin"
+-#define URL_START_OSCAR_SESSION "http://api.oscar.aol.com/aim/startOSCARSession"
++#define URL_START_OSCAR_SESSION "https://api.oscar.aol.com/aim/startOSCARSession"
+ 
+ /*
+  * Using clientLogin requires a developer ID.  This key is for libpurple.
