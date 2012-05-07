@@ -16,7 +16,6 @@
 %endif
 %if 0%{?rhel} == 6
 %define fedora 12
-%define dist .el6
 %endif
 
 # Define variables to use in conditionals
@@ -98,8 +97,8 @@
 
 Name:		pidgin
 Version:	2.6.6
-Release:	5%{?dist}
-License:        GPLv2+ and GPLv2 and MIT
+Release:	5%{?dist}.goose.1
+License:    GPLv2+ and GPLv2 and MIT
 # GPLv2+ - libpurple, gnt, finch, pidgin, most prpls
 # GPLv2 - silc & novell prpls
 # MIT - Zephyr prpl
@@ -657,6 +656,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon May 07 2012 Clint Savage <herlo@gooseproject.org> - 2.6.6-5.goose.1
+- Removed predictive management of dist as it exists
+
 * Wed Aug 04 2010 Matthew Barnes <mbarnes@redhat.com> - 2.6.6-5.el6
 - Actually apply the l10n patch (he says through a brown paper bag).
 
