@@ -8,11 +8,9 @@
 # Map RHEL to Fedora version
 %if 0%{?rhel} == 4
 %define fedora 3
-%define dist .el4
 %endif
 %if 0%{?rhel} == 5
 %define fedora 6
-%define dist .el5
 %endif
 %if 0%{?rhel} == 6
 %define fedora 12
@@ -97,8 +95,8 @@
 
 Name:		pidgin
 Version:	2.6.6
-Release:	5%{?dist}.goose.1
-License:    GPLv2+ and GPLv2 and MIT
+Release:	6%{?dist}
+License:        GPLv2+ and GPLv2 and MIT
 # GPLv2+ - libpurple, gnt, finch, pidgin, most prpls
 # GPLv2 - silc & novell prpls
 # MIT - Zephyr prpl
@@ -137,6 +135,9 @@ Patch102: pidgin-2.6.6-CVE-2010-1624.patch
 
 # RH bug #575688
 Patch103: pidgin-2.6.6-el6-translation-updates.patch
+
+# CVE-2010-3711
+Patch104: pidgin-2.6.6-CVE-2010-3711.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Summary:	A Gtk+ based multiprotocol instant messaging client
@@ -402,6 +403,7 @@ echo "FEDORA=%{fedora} RHEL=%{rhel}"
 %patch101 -p0
 %patch102 -p1 -b .CVE-2010-1624
 %patch103 -p1 -b .translation-updates
+%patch104 -p1 -b .CVE-2010-3711
 
 # Our preferences
 cp %{SOURCE1} prefs.xml
@@ -656,8 +658,8 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
-* Mon May 07 2012 Clint Savage <herlo@gooseproject.org> - 2.6.6-5.goose.1
-- Removed predictive management of dist as it exists
+* Thu Oct 21 2010 Matthew Barnes <mbarnes@redhat.com> - 2.6.6-6.el6
+- Add patch for CVE-2010-3711 (RH bug #645413).
 
 * Wed Aug 04 2010 Matthew Barnes <mbarnes@redhat.com> - 2.6.6-5.el6
 - Actually apply the l10n patch (he says through a brown paper bag).
